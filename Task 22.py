@@ -8,10 +8,12 @@
 n = int(input("Введите количество элементов первого множества: "))
 m = int(input("Введите количество элементов второго множества: "))
 
+# формируем первое множество
 numbers = input("Введите через пробел числа первого множества (количество чисел: {}): ".format(n))
 numbers_list = numbers.split()
 numbers_set1 = set(numbers_list)
 
+# формируем второе множество
 numbers = input("Введите через пробел числа второго множества (количество чисел: {}): ".format(m))
 numbers_list = numbers.split()
 numbers_set2 = set(numbers_list)
