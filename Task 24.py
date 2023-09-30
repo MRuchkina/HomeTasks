@@ -4,3 +4,23 @@
 В этом фермерском хозяйстве внедрена система автоматического сбора черники. Эта система состоит из управляющего модуля и нескольких собирающих модулей. Собирающий модуль за один заход, находясь непосредственно перед некоторым кустом, собирает ягоды с этого куста и с двух соседних с ним.
 Напишите программу для нахождения максимального числа ягод, которое может собрать за один заход собирающий модуль, находясь перед некоторым кустом заданной во входном файле грядки.
 '''
+
+with open("input_task_22.txt", "r") as file:
+    n = int(file.readline())
+    harvest = list(map(int, file.readline().split()))
+
+sum_harvest = [0] * n #ягод, которое можно собрать соответствующим собирающим модулем, находясь перед кустом
+
+sum_harvest[0] = harvest[0]+harvest[n-1]+harvest[1]
+sum_harvest[n-1] = harvest[0]+harvest[n-1]+harvest[n-2]
+
+for i in range(0, n-1):
+    if i==0:
+        sum_harvest[i] = harvest[n-1]+harvest[i]+harvest[i+1]
+    elif i==(n-1):
+        sum_harvest[i] = harvest[i-1]+harvest[i]+harvest[0]
+    else:
+        sum_harvest[i] = harvest[i-1]+harvest[i]+harvest[i+1]
+max_total_harvest= max(sum_harvest)
+
+print(max_total_harvest)
